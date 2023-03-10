@@ -7,7 +7,7 @@ const Categoria = require('../models/categoria');
 
 const obtenerProductos = async (req = request, res = response) => {
 
-    //Condición, me busca solo los categorias que tengan estado en true
+
     const query = { stock: true };
     const listaProductos = await Promise.all([
         Producto.countDocuments(query),
@@ -73,13 +73,10 @@ const obtenerProductoPorId = async (req = request, res = response) => {
 
 const crearProducto = async (req = request, res = response) => {
 
-    const { nombre, proveedor, categoria, cantidad, precio } = req.body;
-    const productoDB = new Producto({ nombre, proveedor, categoria, cantidad, precio });
+    const { nombre, proveedor, categoria, stock,cantidad, precio } = req.body;
+    const productoDB = new Producto({ nombre, proveedor, categoria, stock,cantidad, precio });
 
-    //Validación para encontrar una categoria por nombre en la DB
-    //Generar la data a guardar
 
-    //Guardar en DB
     await productoDB.save();
 
     res.status(201).json({
@@ -95,7 +92,7 @@ const actualizarProducto = async (req = request, res = response) => {
 
     const { id } = req.params;
 
-    //Ignoramos el _id, rol, estado y google al momento de editar y mandar la petición en el req.body
+    
     const { _id, stock, ...resto } = req.body;
 
 

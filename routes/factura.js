@@ -13,24 +13,24 @@ const { validarProducto, validarUsuarioProducto } = require('../middlewares/vali
 //Controllers
 const router = Router();
 
-// Obtener todas las categorias - publico
+// Obtener todas las Facturas - publico
 router.get('/', obtenerFactura);
 
-// Obtener una categoria por el id - publico
+// Obtener una Factura por el id - publico
 router.get('/:id', [
     check('id', 'No es un id de mongo valido').isMongoId(),
     check('id').custom( existeProductoPorId ),
     validarCampos
 ],obtenerFacturaPorId);
 
-// Crear Categoria - privado - cualquier persona con un token valido
+// Crear Factura - privado - cualquier persona con un token valido
 router.post('/agregar', [
     validarJWT,
     //validarStock,
     //validarCampos
 ], crearFactura);
 
-// Actualizar Categoria - privado - se requiere id y un token valido
+// Actualizar Factura - privado - se requiere id y un token valido
 router.put('/editar/:id', [
     validarJWT,
     check('id', 'No es un id de mongo valido').isMongoId(),
@@ -38,7 +38,7 @@ router.put('/editar/:id', [
     validarCampos
 ], actualizarFactura);
 
-// Borrar una categoria - privado - se requiere id y un token valido - solo el admin puede borrar
+// Borrar una factura - privado - se requiere id y un token valido - solo el admin puede borrar
 router.delete('/eliminar/:id', eliminarFactura);
 
 module.exports = router;

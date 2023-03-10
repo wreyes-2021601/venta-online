@@ -45,7 +45,7 @@ const crearFactura = async (req = request, res = response) => {
       return res.status(400).json({ mensaje: 'El usuario no existe.' });
     }
 
-    // Verificar si se encontraron todos los productos
+  
     if (productos.length !== factura.productos.length) {
       return res.status(400).json({ mensaje: 'No se encontraron todos los productos.' });
     }

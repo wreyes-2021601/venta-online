@@ -27,8 +27,7 @@ const facturaSchema = Schema({
     },
     total: {
         type: Number,
-        required: true,
-        default: 0
+        required: true
     }
 });
 

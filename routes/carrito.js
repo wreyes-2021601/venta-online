@@ -10,12 +10,12 @@ const { validarJWT } = require('../middlewares/validar-jwt');
 
 const router = Router();
 
-router.post('/agregarCarrito', [
+router.post('/agregar', [
     validarJWT,
     validarCampos],
     crearCarrito)
 
-router.post('/Comprar', [
+router.post('/comprar', [
 
     validarJWT,
 

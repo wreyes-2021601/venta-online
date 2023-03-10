@@ -18,8 +18,8 @@ router.post('/agregar', [
     check('password', 'La passwarod debe ser mayor a 6 letras').isLength({ min: 6 }),
     check('correo', 'El correo no es valido').isEmail(),
     check('correo').custom( emailExiste ),
-    //check('rol', 'El rol es obligatorio para el post').not().isEmpty(),
-    //check('rol').custom( esRoleValido ),
+    check('rol', 'El rol es obligatorio para el post').not().isEmpty(),
+    check('rol').custom( esRoleValido ),
     validarCampos
 ] , postUsuario);
 
@@ -31,7 +31,7 @@ router.put('/editar/:id',[
     check('correo').custom( emailExiste ),
     check('password', 'La password es obligatorio para el post').not().isEmpty(),
     check('password', 'La passwarod debe ser mayor a 6 letras').isLength({ min: 6 }),
-    //check('rol').custom( esRoleValido ),
+    check('rol').custom( esRoleValido ),
     validarCampos
 ], putUsuario);
 

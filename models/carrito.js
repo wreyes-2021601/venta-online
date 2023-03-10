@@ -24,12 +24,11 @@ const carritoSchema = Schema({
     }],
     fecha: {
       type: Date,
-      default: Date.now
+      required: true
     },
     total: {
       type: Number,
-      required: true,
-      default: 0
+      required: true
     }
   });
   
