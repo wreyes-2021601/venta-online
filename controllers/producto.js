@@ -73,8 +73,8 @@ const obtenerProductoPorId = async (req = request, res = response) => {
 
 const crearProducto = async (req = request, res = response) => {
 
-    const { nombre, proveedor, categoria, stock,cantidad, precio } = req.body;
-    const productoDB = new Producto({ nombre, proveedor, categoria, stock,cantidad, precio });
+    const { nombre, proveedor, categoria, stock,cantidad } = req.body;
+    const productoDB = new Producto({ nombre, proveedor, categoria, stock,cantidad });
 
 
     await productoDB.save();
